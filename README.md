@@ -1,79 +1,36 @@
-# Projeto: Arquitetura SOLID do Sistema - CodeRDIversity
+# Geladeira API
 
-Este projeto tem como objetivo aplicar os princípios de SOLID na arquitetura do nosso sistema, utilizando camadas de repositório e serviço para implementar as funcionalidades de CRUD e validação. Também foi configurado o gerenciamento de banco de dados utilizando o Entity Framework e o ADO.NET.
+API desenvolvida em ASP.NET Core com foco em boas práticas de arquitetura, aplicando os princípios de SOLID e separação de responsabilidades.  
+O projeto simula o gerenciamento de itens em uma geladeira, permitindo operações de CRUD com validações de negócio.
 
-## Estrutura do Projeto
+## Funcionalidades
+- Cadastro de itens
+- Consulta de itens
+- Atualização de informações
+- Remoção de itens
+- Validação de regras de negócio (ex: posições vazias, organização dos itens)
 
-### 1. Camada de Repositório
-Foi criada uma interface `IRepository` contendo os principais métodos de CRUD, e essa interface foi implementada na classe `Repository.cs`.
+## Arquitetura e Boas Práticas
+- Arquitetura em camadas (Controller, Service, Repository)
+- Princípios SOLID
+- Injeção de Dependência nativa do ASP.NET Core
+- Separação de regras de negócio e acesso a dados
 
-- **Métodos implementados:**
-  - Create
-  - Read
-  - Update
-  - Delete
+## Tecnologias Utilizadas
+- C#
+- ASP.NET Core
+- Entity Framework Core
+- ADO.NET
+- SQL Server
+- xUnit e Moq (testes unitários)
+- Git
 
-### 2. Camada de Serviço
-Em seguida, foi criada uma interface chamada `IService`, contendo os principais métodos de serviços e validação. Essa interface foi implementada na classe `Service.cs`.
+## Banco de Dados
+O projeto utiliza:
+- Entity Framework Core para ORM
+- ADO.NET para consultas diretas em cenários específicos
 
-- **Métodos implementados:**
-  - Validação de entradas
-  - Lógica de negócio específica para a aplicação
-
-### 3. Injeção de Dependência
-Foi realizada a injeção de dependência da `Service`, `DbContext`, e `Repository` na `Program.cs`, de modo a garantir que as dependências sejam gerenciadas pelo contêiner de injeção do ASP.NET Core.
-
-### 4. Modificação do Controller
-A interface `IService` foi chamada no construtor do `Controller.cs`, permitindo que o controlador faça uso dos métodos de serviço e validação.
-
-### 5. Validação de Regras Implementadas
-Testamos e validamos todas as regras implementadas nas primeiras aulas, como:
-- Validação de posição vazia
-- Lógica para esvaziar o container
-
-### 6. Testes
-Todos os métodos foram testados e validados antes de serem enviados para garantir que o sistema esteja funcionando conforme o esperado.
-
----
-
-## Configuração e Migrações
-
-### Entity Framework
-
-Este projeto utiliza o Entity Framework para o gerenciamento de banco de dados.
-
-#### Criando a migração inicial
-
-1. Para criar uma migração inicial, execute o seguinte comando no Package Manager Console:
-    ```bash
-    Add-Migration Inicial
-    ```
-
-2. Para aplicar as migrações e atualizar o banco de dados:
-    ```bash
-    Update-Database
-    ```
-
-### ADO.NET
-
-Além do Entity Framework, o projeto também utiliza ADO.NET para interações diretas com o banco de dados, utilizando `SqlConnection` e `SqlCommand` para executar comandos SQL.
-
-
-## Testes
-
-Este projeto inclui testes unitários para validar o comportamento correto das operações CRUD, validações e respostas do controller.
-
-### Ferramentas Utilizadas
-- **xUnit**: Framework utilizado para a execução dos testes unitários.
-- **Moq**: Ferramenta utilizada para criar mocks das dependências injetadas, como os serviços.
-
-### Executando os Testes
-
-Para rodar os testes unitários, execute o seguinte comando no terminal na raiz do projeto:
-
+### Migrações
 ```bash
-dotnet test
-```` 
-
-
-Aluna: Pamela Cruz
+Add-Migration Inicial
+Update-Database
